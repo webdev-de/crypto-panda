@@ -13,7 +13,7 @@ export default class Crypto {
         return pswd.split("")
             .map((c) => c.charCodeAt(0))
             .map((code) => this.textToChars(this.salt)
-                .reduce((a, b) => a ^ b, code))
+            .reduce((a, b) => a ^ b, code))
             .map(this.byteHex)
             .join("");
     }
@@ -28,7 +28,7 @@ export default class Crypto {
         return encoded.match(/.{1,2}/g)
             .map((hex) => parseInt(hex, 16))
             .map((code) => this.textToChars(this.salt)
-                .reduce((a, b) => a ^ b, code))
+            .reduce((a, b) => a ^ b, code))
             .map((charCode) => String.fromCharCode(charCode))
             .join("");
     }
