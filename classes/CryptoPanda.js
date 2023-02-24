@@ -7,8 +7,7 @@ export default class CryptoPanda {
 
     constructor(panda) {
         if (panda) {
-            this.#salt = panda.salt || this.#salt;
-            this.#settings = panda.settings || this.#settings;
+            Object.assign(this, panda);
         }
     }
 
@@ -29,10 +28,10 @@ export default class CryptoPanda {
     }
 
     crypto(salt) {
-        return new Crypto(salt || this.#salt);
+        return new Crypto(salt || this.salt);
     }
 
     password(settings) {
-        return new Password(settings || this.#settings);
+        return new Password(settings || this.settings);
     }
 }
